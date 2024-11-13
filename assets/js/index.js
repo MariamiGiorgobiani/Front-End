@@ -49,7 +49,7 @@ if (index>47)
             temp += `
                 <div class="product" data-id="${item.id}">
                 <img src="${item.images[0]}" alt="${item.title}" width="100">
-                <p>${item.title}</p>
+                <h2>${item.title}</h2>
                 <p>${item.price}$</p>
                 <p>Category: ${item.category.name}</p>
                 <button class="cart" onclick="addToCart(${item.id}, '${item.title}', ${item.price}, '${item.images[0]}')">Add to Cart</button>
