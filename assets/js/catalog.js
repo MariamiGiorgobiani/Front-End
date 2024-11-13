@@ -1,8 +1,5 @@
 let productsData = [];
 
-
-
-
 // Fetch product data from the API (only on index.html)
 if (document.querySelector('.catalog_jewellery')) {
     fetch('https://api.escuelajs.co/api/v1/products')
@@ -43,7 +40,7 @@ if (document.querySelector('.catalog_jewellery')) {
 
 
     document.addEventListener("DOMContentLoaded", () => {
-        // Function to render products dynamically (index.html)
+        // Function to render products dynamically 
         const getProducts = (arr) => {
             let temp = "";
     
@@ -60,11 +57,9 @@ if (document.querySelector('.catalog_jewellery')) {
                     </div>
                 `;
             });
-    
-            // Set the innerHTML of the product catalog
+
             document.querySelector('.catalog_jewellery').innerHTML = temp;
     
-            // Attach event listeners to all product divs
             document.querySelectorAll('.product').forEach(product => {
                 product.addEventListener('click', (event) => {
                     if (event.target.classList.contains('cart')) {
@@ -73,14 +68,13 @@ if (document.querySelector('.catalog_jewellery')) {
                     // Find the product data based on the clicked product's data-id attribute
                     const productId = product.getAttribute('data-id');
                     const clickedProduct = arr.find(item => item.id === parseInt(productId));
-    
-                    // Open the modal and pass the clicked product's details
+
                     openModal(clickedProduct);
                 });
             });
         };
     
-        // Function to open the product modal
+        
         const openModal = (product) => {
             // Get modal and modal elements
             const modal = document.getElementById('product-modal');
@@ -96,7 +90,7 @@ if (document.querySelector('.catalog_jewellery')) {
             }
     
             // Set the modal content with the clicked product's details
-            modalImage.src = product.images[0];  // Use the first image for modal
+            modalImage.src = product.images[0];  
             modalTitle.textContent = product.title;
             modalDescription.textContent = product.description || "No description available.";
             modalPrice.textContent = product.price.toFixed(2);
@@ -110,11 +104,11 @@ if (document.querySelector('.catalog_jewellery')) {
                 modal.style.display = "none";  // Close modal after adding to cart
             };
     
-            // Close modal when clicking on the "x"
-            const closeModalButton = document.querySelector('.close-modal');
-            closeModalButton.onclick = () => {
-                modal.style.display = "none";
-            };
+            // // Close modal when clicking on the "x"
+            // const closeModalButton = document.querySelector('.close-modal');
+            // closeModalButton.onclick = () => {
+            //     modal.style.display = "none";
+            // };
     
             // Close modal when clicking outside the modal content
             window.onclick = (event) => {

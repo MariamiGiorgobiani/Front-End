@@ -1265,10 +1265,5 @@ p {
     height: 100px;
 }
 
-.modal-content span {
-    margin-left: 99%;   
-}
 
-.modal-content p {
-    margin-left: 0px;
-}
+
