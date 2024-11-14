@@ -15,27 +15,26 @@ if (document.querySelector('.catalog_jewellery')) {
 
 
 
-    document.querySelector(`.clothes`).addEventListener("click", (e) => {
-        const filteredProducts = productsData.filter(item => item.category.id == 1);
-        getProducts(filteredProducts)
-    });
-    document.querySelector(`.electronics`).addEventListener("click", (e) => {
-        const filteredProducts = productsData.filter(item => item.category.id == 2);
-        getProducts(filteredProducts)
-    });
-    document.querySelector(`.furniture`).addEventListener("click", (e) => {
-        const filteredProducts = productsData.filter(item => item.category.id == 3);
-        getProducts(filteredProducts)
-    });
-    document.querySelector(`.shoes`).addEventListener("click", (e) => {
-        const filteredProducts = productsData.filter(item => item.category.id == 4);
-        getProducts(filteredProducts)
-    });
-    document.querySelector(`.miscellaneous`).addEventListener("click", (e) => {
-        const filteredProducts = productsData.filter(item => item.category.id == 5);
-        getProducts(filteredProducts)
-    });
-
+        // document.querySelector(`.clothes`).addEventListener("click",  (e) => {
+        //     const filteredProducts = productsData.filter(item => item.category.id == 1);
+        //     getProducts(filteredProducts)
+        // });
+        // document.querySelector(`.electronics`).addEventListener("click",  (e) => {
+        //     const filteredProducts = productsData.filter(item => item.category.id == 2);
+        //     getProducts(filteredProducts)
+        // });
+        // document.querySelector(`.furniture`).addEventListener("click",  (e) => {
+        //     const filteredProducts = productsData.filter(item => item.category.id == 3);
+        //     getProducts(filteredProducts)
+        // });
+        // document.querySelector(`.shoes`).addEventListener("click",  (e) => {
+        //     const filteredProducts = productsData.filter(item => item.category.id == 4);
+        //     getProducts(filteredProducts)
+        // });
+        // document.querySelector(`.miscellaneous`).addEventListener("click",  (e) => {
+        //     const filteredProducts = productsData.filter(item => item.category.id == 5);
+        //     getProducts(filteredProducts)
+        // });
 
 
 
@@ -73,6 +72,27 @@ if (document.querySelector('.catalog_jewellery')) {
                 });
             });
         };
+
+        document.querySelector(`.clothes`).addEventListener("click",  (e) => {
+            const filteredProducts = productsData.filter(item => item.category.id == 1);
+            getProducts(filteredProducts)
+        });
+        document.querySelector(`.electronics`).addEventListener("click",  (e) => {
+            const filteredProducts = productsData.filter(item => item.category.id == 2);
+            getProducts(filteredProducts)
+        });
+        document.querySelector(`.furniture`).addEventListener("click",  (e) => {
+            const filteredProducts = productsData.filter(item => item.category.id == 3);
+            getProducts(filteredProducts)
+        });
+        document.querySelector(`.shoes`).addEventListener("click",  (e) => {
+            const filteredProducts = productsData.filter(item => item.category.id == 4);
+            getProducts(filteredProducts)
+        });
+        document.querySelector(`.miscellaneous`).addEventListener("click",  (e) => {
+            const filteredProducts = productsData.filter(item => item.category.id == 5);
+            getProducts(filteredProducts)
+        });
 
 
         const openModal = (product) => {
@@ -198,7 +218,7 @@ const updateCart = () => {
             li.classList.add('cart-item');
             li.innerHTML = `
                 <img src="${item.image}" width="60" height="60"/>
-                <span>${item.title} - $${item.price} x ${item.quantity}</span>
+                <span class="product-title">${item.title} - $${item.price} x ${item.quantity}</span>
                 <div class="quantity-buttons">
                         <button onclick="changeQuantity(${item.id}, -1)">-</button>
                         <span class="quantity">${item.quantity}</span>
