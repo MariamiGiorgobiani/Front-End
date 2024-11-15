@@ -1,12 +1,12 @@
 let productsData = [];
 
-// Fetch product data from the API (only on index.html)
+// Fetch product data from the API 
 if (document.querySelector('.jewellery')) {
     fetch('https://api.escuelajs.co/api/v1/products')
         .then((resp) => resp.json())
         .then((data) => {
-            productsData = data; // Store the data in the productsData variable
-            getProducts(productsData); // Render products to the page
+            productsData = data; 
+            getProducts(productsData); 
         })
         .catch((err) => {
             console.log(err);
@@ -38,7 +38,7 @@ if (document.querySelector('.jewellery')) {
     
             
 
-    // Function to render products dynamically (index.html)
+
     const getProducts = (arr) => {
         let temp = "";
 
@@ -58,7 +58,62 @@ if (index>47)
         });
 
         document.querySelector('.jewellery').innerHTML = temp;
+
+        document.querySelectorAll('.product').forEach(product => {
+            product.addEventListener('click', (event) => {
+                if (event.target.classList.contains('cart')) {
+                    return; 
+                }
+
+                const productId = product.getAttribute('data-id');
+                const clickedProduct = arr.find(item => item.id === parseInt(productId)); // string to number
+
+                openModal(clickedProduct);
+            });
+        });
     };
+    const openModal = (product) => {
+
+        const modal = document.getElementById('product-modal');
+        const modalImage = document.getElementById('modal-product-image');
+        const modalTitle = document.getElementById('modal-product-title');
+        const modalDescription = document.getElementById('modal-product-description');
+        const modalPrice = document.getElementById('modal-product-price-value');
+        const addToCartButton = document.getElementById('add-to-cart-modal');
+
+     
+
+
+        modalImage.src = product.images[0];
+        modalTitle.textContent = product.title;
+        modalDescription.textContent = product.description || "No description available.";
+        modalPrice.textContent = product.price.toFixed(2);
+
+
+        modal.style.display = "block";
+
+
+        addToCartButton.onclick = () => {
+            addToCart(product.id, product.title, product.price, product.images[0]);
+            modal.style.display = "none";  
+        };
+
+        window.onclick = (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        fetch('https://api.escuelajs.co/api/v1/products')
+            .then((resp) => resp.json())
+            .then((data) => {
+                getProducts(data);
+            })
+            .catch((err) => {
+                console.log(err);
+                alert("Something went wrong");
+            });
+    }
 }
 
 

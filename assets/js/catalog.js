@@ -10,36 +10,11 @@ if (document.querySelector('.catalog_jewellery')) {
         })
         .catch((err) => {
             console.log(err);
-            // alert("Something went wrong");
         });
 
 
 
-        // document.querySelector(`.clothes`).addEventListener("click",  (e) => {
-        //     const filteredProducts = productsData.filter(item => item.category.id == 1);
-        //     getProducts(filteredProducts)
-        // });
-        // document.querySelector(`.electronics`).addEventListener("click",  (e) => {
-        //     const filteredProducts = productsData.filter(item => item.category.id == 2);
-        //     getProducts(filteredProducts)
-        // });
-        // document.querySelector(`.furniture`).addEventListener("click",  (e) => {
-        //     const filteredProducts = productsData.filter(item => item.category.id == 3);
-        //     getProducts(filteredProducts)
-        // });
-        // document.querySelector(`.shoes`).addEventListener("click",  (e) => {
-        //     const filteredProducts = productsData.filter(item => item.category.id == 4);
-        //     getProducts(filteredProducts)
-        // });
-        // document.querySelector(`.miscellaneous`).addEventListener("click",  (e) => {
-        //     const filteredProducts = productsData.filter(item => item.category.id == 5);
-        //     getProducts(filteredProducts)
-        // });
-
-
-
     document.addEventListener("DOMContentLoaded", () => {
-        // render products dynamically 
         const getProducts = (arr) => {
             let temp = "";
 
@@ -62,11 +37,11 @@ if (document.querySelector('.catalog_jewellery')) {
             document.querySelectorAll('.product').forEach(product => {
                 product.addEventListener('click', (event) => {
                     if (event.target.classList.contains('cart')) {
-                        return; // If it's the "Add to Cart" button, do nothing
+                        return; 
                     }
 
                     const productId = product.getAttribute('data-id');
-                    const clickedProduct = arr.find(item => item.id === parseInt(productId));
+                    const clickedProduct = arr.find(item => item.id === parseInt(productId)); // string to number
 
                     openModal(clickedProduct);
                 });
@@ -104,10 +79,7 @@ if (document.querySelector('.catalog_jewellery')) {
             const modalPrice = document.getElementById('modal-product-price-value');
             const addToCartButton = document.getElementById('add-to-cart-modal');
 
-            if (!modal || !modalImage || !modalTitle || !modalDescription || !modalPrice || !addToCartButton) {
-                console.error("Modal or modal elements are missing!");
-                return;
-            }
+            
 
 
             modalImage.src = product.images[0];
@@ -130,7 +102,7 @@ if (document.querySelector('.catalog_jewellery')) {
             //     modal.style.display = "none";
             // };
 
-
+        
             window.onclick = (event) => {
                 if (event.target === modal) {
                     modal.style.display = "none";
@@ -288,7 +260,7 @@ const clearCart = () => {
 
 
 window.onload = function () {
-    if (document.querySelector('.catalog_jewellery')) {
+    if (document.querySelector('.catalog_jewellery') || document.querySelector('.icons')) {
        
         updateCartIcon(); 
     } else if (document.querySelector('.cart-list')) {
@@ -311,32 +283,23 @@ window.onload = function () {
 
 
 
-// modaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaal
-
-
-const modal = document.querySelector('.modal-content');
-const modalImage = document.querySelector('.modalImage');
-const modalTitle = document.querySelector('.modalTitle');
-const modalCategory = document.querySelector('.modalCategory');
-const modalPrice = document.querySelector('.modalPrice');
-const modalDescription = document.querySelector('.modalDescription');
-const closeModal = document.querySelector('.close');
-
-const addToCartBtn = document.getElementById('addToCartBtn'); 
 
 
 
 
-const openModal = (product) => {
-    modalImage.src = product.images; 
-    modalTitle.textContent = product.title;
-    modalCategory.textContent = `Category: ${product.category.name}`;
-    modalPrice.textContent = `Price: $${product.price}`;
-    modalDescription.textContent = product.description || "No description available."; 
 
 
-    modal.style.display = 'block'; 
-};
+
+
+
+
+
+
+
+
+
+
+
 
 
 
